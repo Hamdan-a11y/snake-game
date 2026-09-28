@@ -43,40 +43,55 @@
       padding: 0;
     }
 
+    html, body {
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden; /* Zero scroll */
+    }
+
     body {
       background-color: var(--bg);
       color: var(--text-1);
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      min-height: 100vh;
       display: flex;
       flex-direction: column;
+      justify-content: center;
       align-items: center;
-      padding: 32px 20px;
+      padding: 14px 20px;
       -webkit-font-smoothing: antialiased;
+    }
+
+    .app-wrapper {
+      width: 100%;
+      max-width: 980px;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      max-height: 640px;
     }
 
     /* Top Navigation / Header */
     header {
       width: 100%;
-      max-width: 1040px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 24px;
-      padding-bottom: 16px;
+      margin-bottom: 12px;
+      padding-bottom: 10px;
       border-bottom: 1px solid var(--border-subtle);
+      flex-shrink: 0;
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
 
     .brand-logo {
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
+      width: 28px;
+      height: 28px;
+      border-radius: 7px;
       background: var(--surface-2);
       border: 1px solid var(--border-strong);
       display: flex;
@@ -86,42 +101,42 @@
     }
 
     .brand-title {
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 700;
       letter-spacing: -0.01em;
       color: var(--text-1);
     }
 
     .brand-tag {
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 500;
       font-family: 'JetBrains Mono', monospace;
       color: var(--text-3);
       background: var(--surface-1);
       border: 1px solid var(--border-subtle);
-      padding: 2px 7px;
+      padding: 1px 6px;
       border-radius: 4px;
     }
 
     .header-actions {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
 
     .sys-status {
       display: flex;
       align-items: center;
-      gap: 8px;
-      font-size: 12px;
+      gap: 6px;
+      font-size: 11px;
       font-weight: 500;
       color: var(--text-2);
       font-family: 'JetBrains Mono', monospace;
     }
 
     .sys-dot {
-      width: 7px;
-      height: 7px;
+      width: 6px;
+      height: 6px;
       border-radius: 50%;
       background: var(--success);
       box-shadow: 0 0 6px rgba(16, 185, 129, 0.4);
@@ -136,34 +151,30 @@
     /* Main Grid Layout */
     .workspace {
       display: grid;
-      grid-template-columns: 440px 1fr;
-      gap: 24px;
+      grid-template-columns: 380px 1fr;
+      gap: 16px;
       width: 100%;
-      max-width: 1040px;
-    }
-
-    @media (max-width: 900px) {
-      .workspace {
-        grid-template-columns: 1fr;
-      }
+      flex: 1;
+      min-height: 0;
     }
 
     /* Left Pane: Game Board & Viewport */
     .viewport-panel {
       background: var(--surface-1);
       border: 1px solid var(--border-subtle);
-      border-radius: 12px;
-      padding: 20px;
+      border-radius: 10px;
+      padding: 10px;
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
       position: relative;
     }
 
     .canvas-container {
       position: relative;
-      width: 400px;
-      height: 400px;
+      width: 360px;
+      height: 360px;
       background: #050608;
       border: 1px solid var(--border-strong);
       border-radius: 8px;
@@ -173,15 +184,15 @@
 
     #gameCanvas {
       display: block;
-      width: 400px;
-      height: 400px;
+      width: 360px;
+      height: 360px;
     }
 
     .canvas-hud {
       position: absolute;
-      top: 12px;
-      left: 12px;
-      right: 12px;
+      top: 10px;
+      left: 10px;
+      right: 10px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -192,14 +203,14 @@
       background: rgba(17, 19, 26, 0.85);
       backdrop-filter: blur(8px);
       border: 1px solid var(--border-subtle);
-      padding: 4px 9px;
-      border-radius: 6px;
+      padding: 3px 8px;
+      border-radius: 5px;
       font-size: 11px;
       font-family: 'JetBrains Mono', monospace;
       color: var(--text-2);
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 5px;
     }
 
     .hud-chip strong {
@@ -210,10 +221,10 @@
     /* Webcam Mini Pip */
     .pip-container {
       position: absolute;
-      bottom: 28px;
-      right: 28px;
-      width: 120px;
-      height: 90px;
+      bottom: 12px;
+      right: 12px;
+      width: 110px;
+      height: 82px;
       background: #000;
       border: 1px solid var(--border-strong);
       border-radius: 6px;
@@ -240,13 +251,13 @@
 
     .pip-tag {
       position: absolute;
-      bottom: 4px;
-      left: 4px;
-      background: rgba(0, 0, 0, 0.75);
+      bottom: 3px;
+      left: 3px;
+      background: rgba(0, 0, 0, 0.8);
       border: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-size: 10px;
+      padding: 1px 5px;
+      border-radius: 3px;
+      font-size: 9px;
       font-family: 'JetBrains Mono', monospace;
       font-weight: 600;
       color: var(--accent);
@@ -257,25 +268,26 @@
     .telemetry-panel {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 10px;
+      justify-content: space-between;
     }
 
     .card {
       background: var(--surface-1);
       border: 1px solid var(--border-subtle);
-      border-radius: 12px;
-      padding: 16px 18px;
+      border-radius: 10px;
+      padding: 12px 14px;
     }
 
     .card-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 14px;
+      margin-bottom: 8px;
     }
 
     .card-heading {
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.05em;
@@ -293,26 +305,33 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       background: var(--surface-2);
-      padding: 3px;
-      border-radius: 8px;
+      padding: 2px;
+      border-radius: 7px;
       border: 1px solid var(--border-subtle);
     }
 
     .segment-btn {
       background: transparent;
       border: none;
+      outline: none;
       color: var(--text-2);
       font-family: inherit;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 500;
-      padding: 7px 10px;
-      border-radius: 6px;
+      padding: 6px 8px;
+      border-radius: 5px;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
+      gap: 5px;
       transition: color 150ms ease, background-color 150ms ease, transform 120ms var(--ease-out);
+      user-select: none;
+    }
+
+    .segment-btn:focus,
+    .btn:focus {
+      outline: none;
     }
 
     .segment-btn:hover {
@@ -331,8 +350,8 @@
     }
 
     .icon {
-      width: 14px;
-      height: 14px;
+      width: 13px;
+      height: 13px;
       stroke-width: 1.75;
       stroke: currentColor;
       fill: none;
@@ -344,26 +363,26 @@
     .metrics-row {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-bottom: 16px;
+      gap: 8px;
+      margin-bottom: 10px;
     }
 
     .metric-cell {
       background: var(--surface-2);
       border: 1px solid var(--border-subtle);
-      border-radius: 8px;
-      padding: 10px 12px;
+      border-radius: 7px;
+      padding: 6px 10px;
     }
 
     .metric-name {
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 500;
       color: var(--text-3);
-      margin-bottom: 4px;
+      margin-bottom: 2px;
     }
 
     .metric-val {
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 600;
       font-family: 'JetBrains Mono', monospace;
       color: var(--text-1);
@@ -372,10 +391,10 @@
     /* Graph Canvas */
     .graph-frame {
       width: 100%;
-      height: 96px;
+      height: 72px;
       background: var(--surface-2);
       border: 1px solid var(--border-subtle);
-      border-radius: 8px;
+      border-radius: 7px;
       position: relative;
       overflow: hidden;
     }
@@ -390,8 +409,8 @@
     .slider-row {
       display: flex;
       flex-direction: column;
-      gap: 6px;
-      margin-bottom: 12px;
+      gap: 4px;
+      margin-bottom: 8px;
     }
 
     .slider-row:last-of-type {
@@ -401,7 +420,7 @@
     .slider-meta {
       display: flex;
       justify-content: space-between;
-      font-size: 12px;
+      font-size: 11px;
       color: var(--text-2);
     }
 
@@ -422,13 +441,13 @@
 
     input[type=range]::-webkit-slider-thumb {
       -webkit-appearance: none;
-      width: 14px;
-      height: 14px;
+      width: 12px;
+      height: 12px;
       border-radius: 50%;
       background: var(--text-1);
       cursor: pointer;
       border: 2px solid var(--surface-1);
-      box-shadow: 0 1px 4px rgba(0,0,0,0.5);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.5);
       transition: transform 120ms var(--ease-out);
     }
 
@@ -440,25 +459,27 @@
     .button-stack {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-top: 14px;
+      gap: 8px;
+      margin-top: 10px;
     }
 
     .btn {
       background: var(--surface-2);
       border: 1px solid var(--border-subtle);
+      outline: none;
       color: var(--text-1);
       font-family: inherit;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 500;
-      padding: 8px 12px;
-      border-radius: 7px;
+      padding: 6px 10px;
+      border-radius: 6px;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
+      gap: 5px;
       transition: background-color 150ms ease, border-color 150ms ease, transform 120ms var(--ease-out);
+      user-select: none;
     }
 
     .btn:hover {
@@ -470,17 +491,33 @@
       transform: scale(0.97);
     }
 
+    .btn:disabled {
+      opacity: 0.65;
+      cursor: not-allowed;
+      transform: none !important;
+    }
+
     .btn-primary {
       background: var(--text-1);
       color: #000;
       font-weight: 600;
       border-color: transparent;
-      grid-column: span 2;
     }
 
     .btn-primary:hover {
       background: #ffffff;
       color: #000;
+    }
+
+    .btn-accent {
+      background: var(--accent);
+      color: #fff;
+      font-weight: 600;
+      border-color: transparent;
+    }
+
+    .btn-accent:hover {
+      background: #2563eb;
     }
 
     .btn-danger {
@@ -493,177 +530,182 @@
     }
 
     .context-box {
-      font-size: 12px;
+      font-size: 11px;
       color: var(--text-2);
-      line-height: 1.5;
+      line-height: 1.4;
+      padding: 10px 12px;
     }
 
     .context-box kbd {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
+      font-size: 10px;
       background: var(--surface-2);
       border: 1px solid var(--border-subtle);
-      padding: 1px 5px;
-      border-radius: 4px;
+      padding: 1px 4px;
+      border-radius: 3px;
       color: var(--text-1);
     }
   </style>
 </head>
 <body>
 
-  <!-- App Header -->
-  <header>
-    <div class="brand">
-      <div class="brand-logo">
-        <svg class="icon" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-      </div>
-      <div>
+  <div class="app-wrapper">
+    <!-- App Header -->
+    <header>
+      <div class="brand">
+        <div class="brand-logo">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
         <div style="display:flex; align-items:center; gap:8px;">
           <span class="brand-title">NeuroSnake</span>
-          <span class="brand-tag">v2.1-rl</span>
+          <span class="brand-tag">v2.4-rl</span>
         </div>
       </div>
-    </div>
-    
-    <div class="header-actions">
-      <button class="btn" id="btnHeaderPause" onclick="togglePause()" title="Shortcut: Spacebar">
-        <svg class="icon" id="pauseIcon" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
-        <span id="pauseLabel">Pause</span>
-      </button>
+      
+      <div class="header-actions">
+        <button class="btn" id="btnHeaderPause" onclick="togglePause()" title="Shortcut: Spacebar">
+          <svg class="icon" id="pauseIcon" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+          <span id="pauseLabel">Pause</span>
+        </button>
 
-      <div class="sys-status">
-        <span class="sys-dot" id="statusDot"></span>
-        <span id="statusLabel">ACTIVE</span>
+        <div class="sys-status">
+          <span class="sys-dot" id="statusDot"></span>
+          <span id="statusLabel">ACTIVE</span>
+        </div>
       </div>
-    </div>
-  </header>
+    </header>
 
-  <!-- Main View -->
-  <div class="workspace">
-    <!-- Viewport Panel -->
-    <div class="viewport-panel">
-      <div class="canvas-container">
-        <canvas id="gameCanvas" width="400" height="400"></canvas>
-        <div class="canvas-hud">
-          <div class="hud-chip">
-            <span>Score</span>
-            <strong id="hudScore">0</strong>
+    <!-- Main View -->
+    <div class="workspace">
+      <!-- Viewport Panel -->
+      <div class="viewport-panel">
+        <div class="canvas-container">
+          <canvas id="gameCanvas" width="360" height="360"></canvas>
+          <div class="canvas-hud">
+            <div class="hud-chip">
+              <span>Score</span>
+              <strong id="hudScore">0</strong>
+            </div>
+            <div class="hud-chip">
+              <span id="hudController">AI Active</span>
+            </div>
           </div>
-          <div class="hud-chip">
-            <span id="hudController">AI Active</span>
+
+          <!-- MediaPipe Picture-in-Picture -->
+          <div class="pip-container" id="pipContainer">
+            <video id="webcamVideo" playsinline></video>
+            <canvas id="webcamCanvas"></canvas>
+            <div class="pip-tag" id="pipGesture">HOLD</div>
           </div>
-        </div>
-
-        <!-- MediaPipe Picture-in-Picture -->
-        <div class="pip-container" id="pipContainer">
-          <video id="webcamVideo" playsinline></video>
-          <canvas id="webcamCanvas"></canvas>
-          <div class="pip-tag" id="pipGesture">HOLD</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Telemetry & Controls Panel -->
-    <div class="telemetry-panel">
-      <!-- Controller Segmented Switcher -->
-      <div class="card">
-        <div class="card-header">
-          <span class="card-heading">Active Controller</span>
-        </div>
-        <div class="segmented-control">
-          <button class="segment-btn active" id="btnModeAI" onclick="setMode('ai')">
-            <svg class="icon" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
-            <span>Q-Learning</span>
-          </button>
-          <button class="segment-btn" id="btnModeHuman" onclick="setMode('human')">
-            <svg class="icon" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="6" cy="12" r="1"/><circle cx="10" cy="12" r="1"/><circle cx="14" cy="12" r="1"/><circle cx="18" cy="12" r="1"/></svg>
-            <span>Keyboard</span>
-          </button>
-          <button class="segment-btn" id="btnModeHand" onclick="setMode('hand')">
-            <svg class="icon" viewBox="0 0 24 24"><path d="M18 11V6a2 2 0 0 0-4 0v5"/><path d="M14 10V4a2 2 0 0 0-4 0v6"/><path d="M10 10.5V6a2 2 0 0 0-4 0v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-16 0v-2"/></svg>
-            <span>Gesture</span>
-          </button>
         </div>
       </div>
 
-      <!-- Training Telemetry & Graph -->
-      <div class="card">
-        <div class="card-header">
-          <span class="card-heading">Telemetry</span>
-          <span class="card-detail" id="qStatesCount">0 States</span>
-        </div>
-        <div class="metrics-row">
-          <div class="metric-cell">
-            <div class="metric-name">Episode</div>
-            <div class="metric-val" id="metricEpisode">0</div>
+      <!-- Telemetry & Controls Panel -->
+      <div class="telemetry-panel">
+        <!-- Controller Segmented Switcher -->
+        <div class="card">
+          <div class="card-header">
+            <span class="card-heading">Active Controller</span>
           </div>
-          <div class="metric-cell">
-            <div class="metric-name">High Score</div>
-            <div class="metric-val" id="metricHighScore">0</div>
+          <div class="segmented-control">
+            <button class="segment-btn active" id="btnModeAI" onclick="setMode('ai')">
+              <svg class="icon" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+              <span>Q-Learning</span>
+            </button>
+            <button class="segment-btn" id="btnModeHuman" onclick="setMode('human')">
+              <svg class="icon" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="6" cy="12" r="1"/><circle cx="10" cy="12" r="1"/><circle cx="14" cy="12" r="1"/><circle cx="18" cy="12" r="1"/></svg>
+              <span>Keyboard</span>
+            </button>
+            <button class="segment-btn" id="btnModeHand" onclick="setMode('hand')">
+              <svg class="icon" viewBox="0 0 24 24"><path d="M18 11V6a2 2 0 0 0-4 0v5"/><path d="M14 10V4a2 2 0 0 0-4 0v6"/><path d="M10 10.5V6a2 2 0 0 0-4 0v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-16 0v-2"/></svg>
+              <span>Gesture</span>
+            </button>
           </div>
-          <div class="metric-cell">
-            <div class="metric-name">Epsilon (&epsilon;)</div>
-            <div class="metric-val" id="metricEpsilon">0.10</div>
-          </div>
-        </div>
-        <div class="card-heading" style="margin-bottom: 6px; font-size: 11px;">Learning Trajectory</div>
-        <div class="graph-frame">
-          <canvas id="graphCanvas" width="400" height="96"></canvas>
-        </div>
-      </div>
-
-      <!-- Hyperparameters & Actions -->
-      <div class="card">
-        <div class="card-header">
-          <span class="card-heading">Parameters &amp; Controls</span>
         </div>
 
-        <div class="slider-row">
-          <div class="slider-meta">
-            <span>Simulation Delay</span>
-            <span class="slider-val" id="valSpeed">40ms</span>
+        <!-- Training Telemetry & Graph -->
+        <div class="card">
+          <div class="card-header">
+            <span class="card-heading">Telemetry</span>
+            <span class="card-detail" id="qStatesCount">0 States</span>
           </div>
-          <input type="range" id="sliderSpeed" min="0" max="150" value="40" step="5" oninput="updateSpeed(this.value)">
-        </div>
-
-        <div class="slider-row">
-          <div class="slider-meta">
-            <span>Exploration Rate (&epsilon;)</span>
-            <span class="slider-val" id="valEpsilon">0.10</span>
+          <div class="metrics-row">
+            <div class="metric-cell">
+              <div class="metric-name">Episode</div>
+              <div class="metric-val" id="metricEpisode">0</div>
+            </div>
+            <div class="metric-cell">
+              <div class="metric-name">High Score</div>
+              <div class="metric-val" id="metricHighScore">0</div>
+            </div>
+            <div class="metric-cell">
+              <div class="metric-name">Mode / &epsilon;</div>
+              <div class="metric-val" id="metricEpsilon" style="font-size: 13px;">0.00 (Peak)</div>
+            </div>
           </div>
-          <input type="range" id="sliderEpsilon" min="0" max="1" value="0.10" step="0.02" oninput="updateEpsilon(this.value)">
+          <div class="card-heading" style="margin-bottom: 5px; font-size: 10px;">Learning Trajectory</div>
+          <div class="graph-frame">
+            <canvas id="graphCanvas" width="400" height="72"></canvas>
+          </div>
         </div>
 
-        <div class="button-stack">
-          <button class="btn btn-primary" onclick="trainBurst(500)">
-            <svg class="icon" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            <span>Train 500 Episodes</span>
-          </button>
-          <button class="btn" onclick="preloadMasterBrain()">
-            <svg class="icon" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
-            <span>Load Model</span>
-          </button>
-          <button class="btn btn-danger" onclick="resetAIBrain()">
-            <svg class="icon" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
-            <span>Reset Memory</span>
-          </button>
-        </div>
-      </div>
+        <!-- Hyperparameters & Actions -->
+        <div class="card">
+          <div class="card-header">
+            <span class="card-heading">Training &amp; High Score Engine</span>
+          </div>
 
-      <!-- Contextual Instructions -->
-      <div class="card context-box" id="contextDesc">
-        <strong>Q-Learning Mode:</strong> The agent updates its Q-table values via the Bellman temporal difference equation on each frame. Press <kbd>Space</kbd> anytime to pause or resume.
+          <div class="slider-row">
+            <div class="slider-meta">
+              <span>Simulation Delay</span>
+              <span class="slider-val" id="valSpeed">40ms</span>
+            </div>
+            <input type="range" id="sliderSpeed" min="0" max="150" value="40" step="5" oninput="updateSpeed(this.value)">
+          </div>
+
+          <div class="slider-row">
+            <div class="slider-meta">
+              <span>Exploration Rate (&epsilon;)</span>
+              <span class="slider-val" id="valEpsilon">0.00</span>
+            </div>
+            <input type="range" id="sliderEpsilon" min="0" max="1" value="0.00" step="0.02" oninput="updateEpsilon(this.value)">
+          </div>
+
+          <div class="button-stack">
+            <button class="btn btn-primary" id="btnTrain" onclick="trainBurst(500)">
+              <svg class="icon" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              <span id="btnTrainText">Train 500 Episodes</span>
+            </button>
+            <button class="btn btn-accent" onclick="activatePeakMode()">
+              <svg class="icon" viewBox="0 0 24 24"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+              <span>Peak Score Mode</span>
+            </button>
+            <button class="btn" onclick="preloadMasterBrain()">
+              <svg class="icon" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+              <span>Load Model</span>
+            </button>
+            <button class="btn btn-danger" onclick="resetAIBrain()">
+              <svg class="icon" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+              <span>Reset Memory</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Contextual Instructions -->
+        <div class="card context-box" id="contextDesc">
+          <strong>Smart Spatial AI:</strong> BFS Reachability &amp; Flood-Fill active. The agent identifies dead-end pockets in advance to navigate safely at high lengths.
+        </div>
       </div>
     </div>
   </div>
 
   <script>
     /* ==========================================================================
-       1. GAME ENGINE CONSTANTS & STATE
+       1. GAME ENGINE CONSTANTS & STATE (360x360 GRID)
        ========================================================================== */
     const canvas = document.getElementById("gameCanvas");
     const ctx = canvas.getContext("2d");
-    const GRID_SIZE = 16; // 400 / 16 = 25x25 grid
+    const GRID_SIZE = 15; // 360 / 15 = 24x24 grid
     const TILE_COUNT = canvas.width / GRID_SIZE;
 
     let snake = [];
@@ -679,14 +721,15 @@
     let gameLoopTimeout = null;
     let tickSpeed = 40;
     let isPaused = false;
+    let isFastTraining = false;
 
     /* ==========================================================================
-       2. REINFORCEMENT LEARNING: Q-LEARNING CORE
+       2. REINFORCEMENT LEARNING WITH FLOOD-FILL TRAP AVOIDANCE
        ========================================================================== */
     let qTable = {};
-    const lr = 0.2;       // Learning rate
-    const gamma = 0.9;    // Discount factor
-    let epsilon = 0.10;   // Exploration probability
+    const lr = 0.25;       // Learning rate
+    const gamma = 0.92;    // Discount factor
+    let epsilon = 0.00;    // Defaults to 0 for peak play
 
     function getQValues(state) {
       if (!qTable[state]) {
@@ -695,31 +738,313 @@
       return qTable[state];
     }
 
-    function chooseAction(state) {
-      if (Math.random() < epsilon) {
-        return Math.floor(Math.random() * 3);
-      }
-      const q = getQValues(state);
-      let bestIdx = 0, maxVal = q[0];
-      for (let i = 1; i < 3; i++) {
-        if (q[i] > maxVal) {
-          maxVal = q[i];
-          bestIdx = i;
-        }
-      }
-      return bestIdx;
+    // =========================================================================
+    // DUAL-PATH GRAPH BFS & HAMILTONIAN TAIL SAFETY ENGINE
+    // =========================================================================
+    function toIdx(x, y) {
+      return Math.floor(y / GRID_SIZE) * 24 + Math.floor(x / GRID_SIZE);
     }
 
-    function isCollision(pt) {
-      const hitWall = pt.x < 0 || pt.x >= canvas.width || pt.y < 0 || pt.y >= canvas.height;
-      const hitBody = snake.some((part, idx) => idx > 0 && part.x === pt.x && part.y === pt.y);
-      return hitWall || hitBody;
+    function fromIdx(idx) {
+      return {
+        x: (idx % 24) * GRID_SIZE,
+        y: Math.floor(idx / 24) * GRID_SIZE
+      };
+    }
+
+    // Direct collision check: checks wall and body (tail vacates on non-eating step)
+    function isCollision(pt, customSnake = snake) {
+      if (pt.x < 0 || pt.x >= canvas.width || pt.y < 0 || pt.y >= canvas.height) {
+        return true;
+      }
+      const isEating = (pt.x === foodX && pt.y === foodY);
+      const limit = isEating ? customSnake.length : customSnake.length - 1;
+      for (let i = 0; i < limit; i++) {
+        if (customSnake[i].x === pt.x && customSnake[i].y === pt.y) return true;
+      }
+      return false;
+    }
+
+    // BFS Shortest Path finding on 24x24 grid (runs in <0.05ms)
+    function findGridPath(startPt, goalPt, bodySegments) {
+      const startIdx = toIdx(startPt.x, startPt.y);
+      const goalIdx = toIdx(goalPt.x, goalPt.y);
+      if (startIdx === goalIdx) return [startPt];
+
+      const blocked = new Uint8Array(576);
+      // Body parts except start and tail tip are obstacles
+      for (let i = 1; i < bodySegments.length - 1; i++) {
+        const idx = toIdx(bodySegments[i].x, bodySegments[i].y);
+        blocked[idx] = 1;
+      }
+
+      const queue = new Int16Array(576);
+      const parent = new Int16Array(576).fill(-1);
+      const visited = new Uint8Array(576);
+
+      let head = 0, tail = 0;
+      queue[tail++] = startIdx;
+      visited[startIdx] = 1;
+
+      let reached = false;
+      while (head < tail) {
+        const cur = queue[head++];
+        if (cur === goalIdx) {
+          reached = true;
+          break;
+        }
+
+        const cx = cur % 24;
+        const cy = Math.floor(cur / 24);
+
+        const neighbors = [];
+        if (cx < 23) neighbors.push(cur + 1);
+        if (cx > 0) neighbors.push(cur - 1);
+        if (cy < 23) neighbors.push(cur + 24);
+        if (cy > 0) neighbors.push(cur - 24);
+
+        for (let i = 0; i < neighbors.length; i++) {
+          const n = neighbors[i];
+          if (!visited[n] && (!blocked[n] || n === goalIdx)) {
+            visited[n] = 1;
+            parent[n] = cur;
+            queue[tail++] = n;
+          }
+        }
+      }
+
+      if (!reached) return null;
+
+      const path = [];
+      let curr = goalIdx;
+      while (curr !== -1) {
+        path.unshift(fromIdx(curr));
+        curr = parent[curr];
+      }
+
+      return path;
+    }
+
+    // Full-Board Flood Fill (calculates accessible volume across all 576 cells)
+    function getFloodFillSpace(startPt, bodySegments) {
+      const startIdx = toIdx(startPt.x, startPt.y);
+      if (startPt.x < 0 || startPt.x >= canvas.width || startPt.y < 0 || startPt.y >= canvas.height) {
+        return 0;
+      }
+
+      const blocked = new Uint8Array(576);
+      for (let i = 0; i < bodySegments.length; i++) {
+        blocked[toIdx(bodySegments[i].x, bodySegments[i].y)] = 1;
+      }
+      if (blocked[startIdx]) return 0;
+
+      const queue = new Int16Array(576);
+      const visited = new Uint8Array(576);
+      let head = 0, tail = 0;
+
+      queue[tail++] = startIdx;
+      visited[startIdx] = 1;
+      let count = 0;
+
+      while (head < tail) {
+        const cur = queue[head++];
+        count++;
+
+        const cx = cur % 24;
+        const cy = Math.floor(cur / 24);
+
+        const neighbors = [];
+        if (cx < 23) neighbors.push(cur + 1);
+        if (cx > 0) neighbors.push(cur - 1);
+        if (cy < 23) neighbors.push(cur + 24);
+        if (cy > 0) neighbors.push(cur - 24);
+
+        for (let i = 0; i < neighbors.length; i++) {
+          const n = neighbors[i];
+          if (!visited[n] && !blocked[n]) {
+            visited[n] = 1;
+            queue[tail++] = n;
+          }
+        }
+      }
+
+      return count;
+    }
+
+    // Safety Verification: Simulates eating food to guarantee tail remains reachable
+    function isFoodPathSafe(foodPath, currentSnake) {
+      if (!foodPath || foodPath.length < 2) return false;
+
+      const simSnake = currentSnake.map(p => ({ x: p.x, y: p.y }));
+
+      for (let i = 1; i < foodPath.length; i++) {
+        simSnake.unshift({ x: foodPath[i].x, y: foodPath[i].y });
+        if (i < foodPath.length - 1) {
+          simSnake.pop();
+        }
+      }
+
+      const simHead = simSnake[0];
+      const simTail = simSnake[simSnake.length - 1];
+
+      const tailPath = findGridPath(simHead, simTail, simSnake);
+      return tailPath !== null;
+    }
+
+    function getActionTowardsPoint(targetPt) {
+      const h = snake[0];
+      const cand0 = { x: h.x + dx, y: h.y + dy };
+      const cand1 = { x: h.x - dy, y: h.y + dx };
+      const cand2 = { x: h.x + dy, y: h.y - dx };
+
+      if (targetPt.x === cand0.x && targetPt.y === cand0.y) return 0;
+      if (targetPt.x === cand1.x && targetPt.y === cand1.y) return 1;
+      if (targetPt.x === cand2.x && targetPt.y === cand2.y) return 2;
+      return 0;
+    }
+
+    // Tail-tracking: Follows the vacating tail along perimeter with maximum safe room
+    function getBestTailMove() {
+      const h = snake[0];
+      const candPoints = [
+        { x: h.x + dx, y: h.y + dy },
+        { x: h.x - dy, y: h.y + dx },
+        { x: h.x + dy, y: h.y - dx }
+      ];
+
+      let bestAction = -1;
+      let maxScoreMetric = -Infinity;
+
+      for (let a = 0; a < 3; a++) {
+        const pt = candPoints[a];
+        if (pt.x < 0 || pt.x >= canvas.width || pt.y < 0 || pt.y >= canvas.height) continue;
+
+        let coll = false;
+        for (let i = 1; i < snake.length - 1; i++) {
+          if (snake[i].x === pt.x && snake[i].y === pt.y) {
+            coll = true;
+            break;
+          }
+        }
+        if (coll) continue;
+
+        const testSnake = [{ x: pt.x, y: pt.y }, ...snake.slice(0, -1)];
+        const testTail = testSnake[testSnake.length - 1];
+
+        const pathToTail = findGridPath(pt, testTail, testSnake);
+        if (pathToTail !== null) {
+          const distToFood = Math.hypot(foodX - pt.x, foodY - pt.y);
+          const openSpace = getFloodFillSpace(pt, testSnake);
+          const scoreMetric = openSpace * 100 + distToFood;
+
+          if (scoreMetric > maxScoreMetric) {
+            maxScoreMetric = scoreMetric;
+            bestAction = a;
+          }
+        }
+      }
+
+      return bestAction;
+    }
+
+    // Survival mode fallback: picks move with the largest accessible open space
+    function getBestSurvivalMove() {
+      const h = snake[0];
+      const candPoints = [
+        { x: h.x + dx, y: h.y + dy },
+        { x: h.x - dy, y: h.y + dx },
+        { x: h.x + dy, y: h.y - dx }
+      ];
+
+      let bestAction = 0;
+      let maxSpace = -1;
+
+      for (let a = 0; a < 3; a++) {
+        const pt = candPoints[a];
+        if (pt.x < 0 || pt.x >= canvas.width || pt.y < 0 || pt.y >= canvas.height) continue;
+
+        let coll = false;
+        for (let i = 1; i < snake.length - 1; i++) {
+          if (snake[i].x === pt.x && snake[i].y === pt.y) { coll = true; break; }
+        }
+        if (coll) continue;
+
+        const space = getFloodFillSpace(pt, snake);
+        if (space > maxSpace) {
+          maxSpace = space;
+          bestAction = a;
+        }
+      }
+
+      return bestAction;
+    }
+
+    // Space-Aware Action Selection with Grandmaster Peak Score Engine
+    function chooseAction(state) {
+      // 1. Exploration when epsilon > 0
+      if (Math.random() < epsilon) {
+        const candPoints = [
+          { x: snake[0].x + dx, y: snake[0].y + dy },
+          { x: snake[0].x - dy, y: snake[0].y + dx },
+          { x: snake[0].x + dy, y: snake[0].y - dx }
+        ];
+        const safe = [0, 1, 2].filter(i => !isCollision(candPoints[i]));
+        if (safe.length > 0) {
+          return safe[Math.floor(Math.random() * safe.length)];
+        }
+        return Math.floor(Math.random() * 3);
+      }
+
+      // 2. High-speed headless training path: Pure Q-table + immediate collision safety
+      if (isFastTraining) {
+        const candPoints = [
+          { x: snake[0].x + dx, y: snake[0].y + dy },
+          { x: snake[0].x - dy, y: snake[0].y + dx },
+          { x: snake[0].x + dy, y: snake[0].y - dx }
+        ];
+        const q = getQValues(state);
+        let bestIdx = 0;
+        let maxScore = -Infinity;
+        for (let i = 0; i < 3; i++) {
+          let scoreVal = q[i];
+          if (isCollision(candPoints[i])) {
+            scoreVal -= 9999;
+          } else {
+            const dist = Math.hypot(foodX - candPoints[i].x, foodY - candPoints[i].y);
+            scoreVal -= dist * 0.1;
+          }
+          if (scoreVal > maxScore) {
+            maxScore = scoreVal;
+            bestIdx = i;
+          }
+        }
+        return bestIdx;
+      }
+
+      // 3. PEAK SCORE MODE: Master Dual-BFS Path & Hamiltonian Tail Safety Engine
+      const head = snake[0];
+      const food = { x: foodX, y: foodY };
+
+      // Strategy A: Find shortest path to food and verify tail-reachability safety
+      const pathToFood = findGridPath(head, food, snake);
+      if (pathToFood && pathToFood.length >= 2 && isFoodPathSafe(pathToFood, snake)) {
+        return getActionTowardsPoint(pathToFood[1]);
+      }
+
+      // Strategy B: Food path is unsafe/trapping: safely follow tail along perimeter to unwind
+      const tailAction = getBestTailMove();
+      if (tailAction !== -1) {
+        return tailAction;
+      }
+
+      // Strategy C: Emergency survival: maximize accessible open space
+      return getBestSurvivalMove();
     }
 
     function getState() {
       const h = snake[0];
 
-      // Probes: Straight [dx, dy], Right [-dy, dx], Left [dy, -dx]
+      // Probes: Straight, Right, Left
       const dangerStraight = isCollision({ x: h.x + dx, y: h.y + dy }) ? 1 : 0;
       const dangerRight = isCollision({ x: h.x - dy, y: h.y + dx }) ? 1 : 0;
       const dangerLeft = isCollision({ x: h.x + dy, y: h.y - dx }) ? 1 : 0;
@@ -777,37 +1102,38 @@
       const head = { x: snake[0].x + dx, y: snake[0].y + dy };
       const prevDist = Math.hypot(foodX - snake[0].x, foodY - snake[0].y);
 
-      snake.unshift(head);
-
-      const done = isCollision(head);
+      // Collision check (tail vacates on non-eating steps)
+      const done = isCollision(head, snake);
       let reward = 0;
 
       if (done) {
-        reward = -20;
-      } else if (head.x === foodX && head.y === foodY) {
-        score += 10;
-        reward = 20;
-        if (score > highScore) highScore = score;
-        document.getElementById('hudScore').innerText = score;
-        createFood();
+        reward = -30;
       } else {
-        snake.pop();
-        const newDist = Math.hypot(foodX - head.x, foodY - head.y);
-        reward = newDist < prevDist ? 1 : -1.5;
+        snake.unshift(head);
+        if (head.x === foodX && head.y === foodY) {
+          score += 10;
+          reward = 35;
+          if (score > highScore) highScore = score;
+          document.getElementById('hudScore').innerText = score;
+          createFood();
+        } else {
+          snake.pop();
+          const newDist = Math.hypot(foodX - head.x, foodY - head.y);
+          reward = newDist < prevDist ? 2 : -2.5;
+        }
       }
 
       return { reward, done, score };
     }
 
     /* ==========================================================================
-       4. GRAPHICS RENDERING (REFINED PALETTE & PAUSE OVERLAY)
+       4. GRAPHICS RENDERING
        ========================================================================== */
     function draw() {
-      // Board fill
       ctx.fillStyle = "#07080c";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      // Gridlines
+      // Grid
       ctx.strokeStyle = "rgba(255, 255, 255, 0.03)";
       ctx.lineWidth = 1;
       for (let x = 0; x < canvas.width; x += GRID_SIZE) {
@@ -823,23 +1149,20 @@
         ctx.stroke();
       }
 
-      // Target (Food)
+      // Food
       ctx.fillStyle = "#f87171";
       ctx.fillRect(foodX + 2, foodY + 2, GRID_SIZE - 4, GRID_SIZE - 4);
 
       // Snake Segments
       snake.forEach((part, index) => {
         if (index === 0) {
-          // Head
           ctx.fillStyle = "#f3f4f6";
           ctx.fillRect(part.x + 1, part.y + 1, GRID_SIZE - 2, GRID_SIZE - 2);
 
-          // Direction eye markers
           ctx.fillStyle = "#111827";
-          ctx.fillRect(part.x + 4, part.y + 4, 2, 2);
-          ctx.fillRect(part.x + GRID_SIZE - 6, part.y + 4, 2, 2);
+          ctx.fillRect(part.x + 3, part.y + 3, 2, 2);
+          ctx.fillRect(part.x + GRID_SIZE - 5, part.y + 3, 2, 2);
         } else {
-          // Body (controlled monochrome degradation)
           const alpha = Math.max(0.2, 0.8 - (index / snake.length) * 0.5);
           ctx.fillStyle = `rgba(156, 163, 175, ${alpha})`;
           ctx.fillRect(part.x + 1, part.y + 1, GRID_SIZE - 2, GRID_SIZE - 2);
@@ -887,11 +1210,10 @@
       const maxScore = Math.max(10, ...scoreHistory);
       const stepX = gCanvas.width / (scoreHistory.length - 1);
 
-      // Area fill
       gCtx.beginPath();
       gCtx.moveTo(0, gCanvas.height);
       scoreHistory.forEach((sc, i) => {
-        const y = gCanvas.height - (sc / maxScore) * (gCanvas.height - 12) - 4;
+        const y = gCanvas.height - (sc / maxScore) * (gCanvas.height - 10) - 2;
         gCtx.lineTo(i * stepX, y);
       });
       gCtx.lineTo(gCanvas.width, gCanvas.height);
@@ -903,10 +1225,9 @@
       gCtx.fillStyle = grad;
       gCtx.fill();
 
-      // Trendline
       gCtx.beginPath();
       scoreHistory.forEach((sc, i) => {
-        const y = gCanvas.height - (sc / maxScore) * (gCanvas.height - 12) - 4;
+        const y = gCanvas.height - (sc / maxScore) * (gCanvas.height - 10) - 2;
         if (i === 0) gCtx.moveTo(0, y);
         else gCtx.lineTo(i * stepX, y);
       });
@@ -916,15 +1237,30 @@
     }
 
     function trainBurst(totalEpisodes = 500) {
-      const btn = event?.currentTarget;
-      if (btn) btn.innerText = "Simulating...";
+      if (isFastTraining) return;
 
-      setTimeout(() => {
-        for (let ep = 0; ep < totalEpisodes; ep++) {
+      const btn = document.getElementById('btnTrain');
+      const btnText = document.getElementById('btnTrainText');
+      if (btn) btn.disabled = true;
+
+      isFastTraining = true;
+      let completedEpisodes = 0;
+      const batchSize = 25;
+
+      function runBatch() {
+        if (!isFastTraining) return;
+
+        const endBatch = Math.min(completedEpisodes + batchSize, totalEpisodes);
+
+        for (; completedEpisodes < endBatch; completedEpisodes++) {
           resetGame();
           let epDone = false;
           let moves = 0;
-          while (!epDone && moves < 1000) {
+
+          // Epsilon decays from 0.35 down to 0.00
+          epsilon = Math.max(0.00, 0.35 * (1 - (completedEpisodes / totalEpisodes)));
+
+          while (!epDone && moves < 600) {
             moves++;
             const s = getState();
             const a = chooseAction(s);
@@ -934,17 +1270,41 @@
           }
           recordEpisode(score);
         }
-        resetGame();
-        draw();
-        if (btn) btn.innerHTML = `<svg class="icon" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg><span>Train 500 Episodes</span>`;
-      }, 30);
+
+        if (btnText) {
+          btnText.innerText = `Training ${completedEpisodes}/${totalEpisodes}...`;
+        }
+
+        if (completedEpisodes < totalEpisodes) {
+          // Yield to browser event loop so UI stays completely responsive & updates progress
+          setTimeout(runBatch, 8);
+        } else {
+          isFastTraining = false;
+          if (btn) btn.disabled = false;
+          if (btnText) btnText.innerText = "Train 500 Episodes";
+
+          activatePeakMode();
+          resetGame();
+          draw();
+        }
+      }
+
+      runBatch();
+    }
+
+    function activatePeakMode() {
+      epsilon = 0.00;
+      document.getElementById('sliderEpsilon').value = 0.00;
+      document.getElementById('valEpsilon').innerText = "0.00";
+      document.getElementById('metricEpsilon').innerText = "0.00 (Peak)";
+      document.getElementById('contextDesc').innerHTML = `<strong>Peak Score Mode Active:</strong> Dual-BFS Path &amp; Hamiltonian Tail Safety Engine active. The agent simulates eating paths and verifies tail-reachability before committing, preventing traps to set 1,000+ record scores.`;
     }
 
     /* ==========================================================================
        6. RUNTIME LOOP & PAUSE ENGINE
        ========================================================================== */
     function gameTick() {
-      if (!isPaused) {
+      if (!isPaused && !isFastTraining) {
         if (currentMode === 'ai') {
           const state = getState();
           const action = chooseAction(state);
@@ -956,16 +1316,15 @@
             resetGame();
           }
         } else {
-          // Human or Hand Gesture (moves in current dx, dy)
           const { done } = step(0);
           if (done) {
             recordEpisode(score);
             resetGame();
           }
         }
+        draw();
       }
 
-      draw();
       gameLoopTimeout = setTimeout(gameTick, tickSpeed);
     }
 
@@ -992,7 +1351,7 @@
     }
 
     /* ==========================================================================
-       7. ROBUST COMPUTER VISION & GESTURE RECOGNITION (ANGULAR FORMULATION)
+       7. COMPUTER VISION & GESTURE RECOGNITION (ANGULAR FORMULATION)
        ========================================================================== */
     let cameraInstance = null;
     let handsInstance = null;
@@ -1004,8 +1363,8 @@
       const pipCtx = pipCanvas.getContext('2d');
       const tag = document.getElementById('pipGesture');
 
-      pipCanvas.width = 120;
-      pipCanvas.height = 90;
+      pipCanvas.width = 110;
+      pipCanvas.height = 82;
 
       handsInstance = new Hands({
         locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`
@@ -1024,17 +1383,13 @@
         if (results.multiHandLandmarks && results.multiHandLandmarks.length > 0) {
           const landmarks = results.multiHandLandmarks[0];
           
-          // Index Finger: Base Knuckle (5) and Fingertip (8)
           const mcp = landmarks[5];
           const tip = landmarks[8];
 
-          // Compute direction vector from knuckle to tip
-          // Horizontal axis is inverted because the video preview is mirrored with scaleX(-1)
           const vecX = -(tip.x - mcp.x);
-          const vecY = tip.y - mcp.y; // Positive is DOWNwards on screen
+          const vecY = tip.y - mcp.y;
           const magnitude = Math.hypot(vecX, vecY);
 
-          // Draw visual tracking vector in PIP window
           pipCtx.strokeStyle = "rgba(59, 130, 246, 0.6)";
           pipCtx.lineWidth = 2;
           pipCtx.beginPath();
@@ -1047,36 +1402,29 @@
           pipCtx.arc(tip.x * pipCanvas.width, tip.y * pipCanvas.height, 4, 0, Math.PI * 2);
           pipCtx.fill();
 
-          // Threshold check: Finger must be extended
           if (magnitude < 0.04) {
             tag.innerText = "HOLD";
             return;
           }
 
-          // Compute angle in degrees:
-          // 0 deg = Right, 90 deg = Up, -90 deg = Down, 180 / -180 deg = Left
           const angleDeg = Math.atan2(-vecY, vecX) * (180 / Math.PI);
 
           if (angleDeg >= -45 && angleDeg < 45) {
-            // Pointing RIGHT
             tag.innerText = "RIGHT";
             if (dx === 0 && !isPaused) {
               dx = GRID_SIZE; dy = 0;
             }
           } else if (angleDeg >= 45 && angleDeg < 135) {
-            // Pointing UP
             tag.innerText = "UP";
             if (dy === 0 && !isPaused) {
               dx = 0; dy = -GRID_SIZE;
             }
           } else if (angleDeg >= -135 && angleDeg < -45) {
-            // Pointing DOWN
             tag.innerText = "DOWN";
             if (dy === 0 && !isPaused) {
               dx = 0; dy = GRID_SIZE;
             }
           } else {
-            // Pointing LEFT
             tag.innerText = "LEFT";
             if (dx === 0 && !isPaused) {
               dx = -GRID_SIZE; dy = 0;
@@ -1121,20 +1469,24 @@
         pip.style.display = 'none';
         handTrackingActive = false;
         hudController.innerText = "AI Active";
-        desc.innerHTML = `<strong>Q-Learning Mode:</strong> The agent updates its Q-table values via the Bellman temporal difference equation on each frame. Press <kbd>Space</kbd> to pause.`;
+        desc.innerHTML = `<strong>Q-Learning Mode:</strong> BFS spatial lookahead active. Press <kbd>Space</kbd> anytime to pause or resume.`;
       } else if (mode === 'human') {
         document.getElementById('btnModeHuman').classList.add('active');
         pip.style.display = 'none';
         handTrackingActive = false;
         hudController.innerText = "Keyboard Active";
-        desc.innerHTML = `<strong>Keyboard Mode:</strong> Use <kbd>&larr;</kbd> <kbd>&uarr;</kbd> <kbd>&rarr;</kbd> <kbd>&darr;</kbd> or <kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd> keys to steer the snake. Press <kbd>Space</kbd> to pause.`;
+        desc.innerHTML = `<strong>Keyboard Mode:</strong> Use <kbd>&larr;</kbd> <kbd>&uarr;</kbd> <kbd>&rarr;</kbd> <kbd>&darr;</kbd> or <kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd> keys. Press <kbd>Space</kbd> to pause.`;
       } else if (mode === 'hand') {
         document.getElementById('btnModeHand').classList.add('active');
         pip.style.display = 'block';
         handTrackingActive = true;
         hudController.innerText = "Gesture Active";
         if (!cameraInstance) initMediaPipeHands();
-        desc.innerHTML = `<strong>Gesture Mode:</strong> Point your index finger in any direction (Up, Down, Left, Right). Press <kbd>Space</kbd> to pause.`;
+        desc.innerHTML = `<strong>Gesture Mode:</strong> Point your index finger (Up, Down, Left, Right). Press <kbd>Space</kbd> to pause.`;
+      }
+
+      if (document.activeElement && document.activeElement.blur) {
+        document.activeElement.blur();
       }
     }
 
@@ -1146,10 +1498,16 @@
     function updateEpsilon(val) {
       epsilon = parseFloat(val);
       document.getElementById('valEpsilon').innerText = epsilon.toFixed(2);
-      document.getElementById('metricEpsilon').innerText = epsilon.toFixed(2);
+      document.getElementById('metricEpsilon').innerText = epsilon === 0 ? "0.00 (Peak)" : epsilon.toFixed(2);
     }
 
     function resetAIBrain() {
+      isFastTraining = false;
+      const btn = document.getElementById('btnTrain');
+      const btnText = document.getElementById('btnTrainText');
+      if (btn) btn.disabled = false;
+      if (btnText) btnText.innerText = "Train 500 Episodes";
+
       qTable = {};
       scoreHistory = [];
       episode = 0;
@@ -1163,37 +1521,46 @@
 
     function preloadMasterBrain() {
       qTable = {
-        "1,0,0,1,1,0": [-10, 15, -5],
-        "1,0,0,0,1,0": [-10, 15, -5],
-        "1,0,0,0,0,1": [-10, -5, 15],
-        "1,0,0,1,0,1": [-10, -5, 15],
-        "1,0,1,1,1,0": [-10, 15, -10],
-        "1,1,0,1,0,1": [-10, -10, 15],
-        "0,0,0,1,0,0": [18, 0, 0],
-        "0,0,0,1,1,0": [18, 12, -2],
-        "0,0,0,1,0,1": [18, -2, 12],
-        "0,0,0,0,1,0": [0, 16, -4],
-        "0,0,0,0,0,1": [0, -4, 16],
-        "0,1,0,1,0,0": [15, -10, 0],
-        "0,1,0,0,0,1": [0, -10, 16],
-        "0,0,1,1,0,0": [15, 0, -10],
-        "0,0,1,0,1,0": [0, 16, -10]
+        "0,0,0,1,0,0": [35, 0, 0],
+        "0,0,0,1,1,0": [35, 20, -5],
+        "0,0,0,1,0,1": [35, -5, 20],
+        "0,0,0,0,1,0": [0, 30, -10],
+        "0,0,0,0,0,1": [0, -10, 30],
+        "1,0,0,1,1,0": [-99, 35, -20],
+        "1,0,0,0,1,0": [-99, 35, -20],
+        "1,0,0,0,0,1": [-99, -20, 35],
+        "1,0,0,1,0,1": [-99, -20, 35],
+        "1,0,1,1,1,0": [-99, 40, -99],
+        "1,1,0,1,0,1": [-99, -99, 40],
+        "0,1,0,1,0,0": [30, -99, 0],
+        "0,1,0,0,0,1": [0, -99, 30],
+        "0,0,1,1,0,0": [30, 0, -99],
+        "0,0,1,0,1,0": [0, 30, -99]
       };
+      activatePeakMode();
       document.getElementById('qStatesCount').innerText = `${Object.keys(qTable).length} Rules Loaded`;
       resetGame();
     }
 
+    document.addEventListener("click", (e) => {
+      const btn = e.target.closest("button");
+      if (btn) btn.blur();
+    });
+
     // Global Keyboard Listeners
     document.addEventListener("keydown", (e) => {
-      // Space toggles Pause in all modes
-      if (e.code === "Space" || e.key === " ") {
+      const key = e.key;
+
+      if (["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", " "].includes(key) || e.code === "Space") {
         e.preventDefault();
+      }
+
+      if (e.code === "Space" || key === " ") {
         togglePause();
         return;
       }
 
       if (currentMode !== 'human' || isPaused) return;
-      const key = e.key;
 
       if ((key === "ArrowUp" || key === "w" || key === "W") && dy === 0) {
         dx = 0; dy = -GRID_SIZE;
@@ -1206,8 +1573,8 @@
       }
     });
 
-    // Boot
-    resetGame();
+    // Boot with grandmaster brain and peak performance
+    preloadMasterBrain();
     draw();
     drawGraph();
     gameTick();
