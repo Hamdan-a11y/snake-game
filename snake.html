@@ -45,7 +45,38 @@
     let foodX;
     let foodY;
 
-    function resetGame() {
+    let qTable = {};
+    const lr = 0.1;
+    const gamma = 0.9;
+    let epsilon = 0.2;
+
+    function getQValues(state) {
+      if (!qTable[state]) qTable[state] = [0, 0, 0];
+      return qTable[state];
+}
+    function chooseAction(state) {
+      if (Math.random() < epsilon) return Math.floor(Math.random() * 3);
+      const q = getQValues(state);
+      return q.indexOf(Math.max(...q));
+}
+function getState() {
+  const h = snake[0];
+  const d = [isCollision({x: h.x + dx, y: h.y + dy}), isCollision({x: h.x - dy, y: h.y + dx}), isCollision({x: h.x + dy, y: h.y - dx})];
+  return [...d, dx, dy, foodX < h.x, foodX > h.x, foodY < h.y, foodY > h.y].map(Number).join(',');
+}
+function updateQ(state, action, reward, nextState, done) {
+  const maxNextQ = done ? 0 : Math.max(...getQValues(nextState));
+  const currentQ = getQValues(state)[action];
+  qTable[state][action] = currentQ + lr * (reward + gamma * maxNextQ - currentQ);
+}
+  function trainStep() {
+  const state = getState(), action = chooseAction(state);
+  const { reward, done } = step(action);
+  updateQ(state, action, reward, getState(), done);
+  if (done) resetGame();
+}
+
+  function resetGame() {
       snake = [{x: 150, y: 150}, {x: 140, y: 150}, {x: 130, y: 150}, {x: 120, y: 150}, {x: 110, y: 150}];
       score = 0;
       dx = 10; dy = 0;
@@ -172,21 +203,16 @@ function drawFood() {
   ctx.fillRect(foodX, foodY, 10, 10);
   ctx.strokeRect(foodX, foodY, 10, 10);
 }
-function didGameEnd() {
-  // Check if head bit any part of the body
-  for (let i = 4; i < snake.length; i++) {
-    const didCollide = snake[i].x === snake[0].x && snake[i].y === snake[0].y;
-    if (didCollide) return true;
-  }
-
-  // Check if head hit any of the 4 walls
-  const hitLeftWall = snake[0].x < 0;
-  const hitRightWall = snake[0].x > gameCanvas.width - 10;
-  const hitTopWall = snake[0].y < 0;
-  const hitBottomWall = snake[0].y > gameCanvas.height - 10;
-
-  return hitLeftWall || hitRightWall || hitTopWall || hitBottomWall;
+function isCollision(pt) {
+  const hitWall = pt.x < 0 || pt.x > gameCanvas.width - 10 || pt.y < 0 || pt.y > gameCanvas.height - 10;
+  const hitSelf = snake.some((part, i) => i > 0 && part.x === pt.x && part.y === pt.y);
+  return hitWall || hitSelf;
 }
+
+function didGameEnd() {
+  return isCollision(snake[0]);
+}
+
 
 resetGame();
 main();
