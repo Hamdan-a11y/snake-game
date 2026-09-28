@@ -49,6 +49,8 @@
       snake = [{x: 150, y: 150}, {x: 140, y: 150}, {x: 130, y: 150}, {x: 120, y: 150}, {x: 110, y: 150}];
       score = 0;
       dx = 10; dy = 0;
+      document.getElementById('score').innerHTML = score;
+      createFood();
 }
 
 
@@ -71,10 +73,10 @@
       snake.forEach(drawSnakePart);
       }
     function advanceSnake() {
-  const head = {x: snake[0].x + dx, y: snake[0].y + dy};
-  snake.unshift(head);
+      const head = {x: snake[0].x + dx, y: snake[0].y + dy};
+      snake.unshift(head);
 
-  const didEatFood = snake[0].x === foodX && snake[0].y === foodY;
+      const didEatFood = snake[0].x === foodX && snake[0].y === foodY;
 
   if (didEatFood) {
     // 1. Add 10 to score
@@ -87,6 +89,7 @@
     // Only remove the tail if it did NOT eat food!
     snake.pop();
   }
+    return didEatFood;
 }
 function changeDirection(event) {
    // 1. Check if the door is locked FIRST:
@@ -174,7 +177,7 @@ function didGameEnd() {
   return hitLeftWall || hitRightWall || hitTopWall || hitBottomWall;
 }
 
-createFood();
+resetGame();
 main();
 // Listen for arrow key presses on the keyboard
 document.addEventListener("keydown", changeDirection);
