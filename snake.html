@@ -52,11 +52,13 @@
       document.getElementById('score').innerHTML = score;
       createFood();
 }
-    function step() {
-      const didEat = advanceSnake();
-      const done = didGameEnd();
-      return { reward: done ? -10 : (didEat ? 10 : 0), done };
-}
+    function step(action) {
+        if (action === 1) [dx, dy] = [-dy, dx];
+        if (action === 2) [dx, dy] = [dy, -dx];
+        const didEat = advanceSnake();
+        const done = didGameEnd();
+        return { reward: done ? -10 : (didEat ? 10 : 0), done };
+    }
 
     function clearCanvas() {
       ctx.fillStyle = "white";
